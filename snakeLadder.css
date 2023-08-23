@@ -1,0 +1,936 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    
+
+
+
+
+    background-image: url('backgroundimage.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    
+    
+}
+
+.main-body{
+    display:flex;
+    width:100%;
+    height:100vh;
+}
+
+.left{
+    
+    flex:1;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+.right{
+   
+    flex:2;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    order:2;
+    position:relative;
+}
+
+.home{
+    position: absolute;
+    height:80px;
+    width:80px;
+    border-radius: 50%;
+   
+    left:120px;
+    bottom:40px;
+    background-color: rgb(121, 8, 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    display:none;
+    
+}
+.board{
+    box-sizing: content-box;
+    height:500px;
+    width:500px;
+    display: flex;
+    
+    
+    background-image: url('board.jpg');
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display:grid;
+    grid-template-columns: repeat(10,1fr);
+    position: relative;
+}
+.redButton{
+    
+    
+    color:red;
+    
+   display: none;
+   
+    
+}
+
+.blackButton{
+    
+    color:black;
+    display: none;
+   
+   
+}
+
+
+.redInitialButton{
+   
+    color:red;
+    
+}
+
+.blueInitialButton{
+    color:black;
+}
+
+.fa{
+    font-size: 40px;
+}
+
+
+.grid-item{
+    height:50px;
+    width:50px;
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight:bold;
+    color:white;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-style: italic;
+}
+
+
+
+.playText{
+    
+    height: 68px;
+    width:220px;
+    
+    border-radius: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color:rgba(10, 196, 50, 0.521);
+    text-align: center;
+    background-color: black;
+    color: yellow;
+    text-shadow: 2px 3px red;
+
+    
+    
+}
+.result{
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    
+    text-align: center;
+    
+    color:red;
+   
+
+}
+
+.leftboard{
+    margin-top: 5px;
+    height:350px;
+    width:300px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+.startBtn{
+    margin-top: 4px;
+    
+    
+}
+.startBtn button{
+    width:170px;
+    height:45px;
+    padding:6px;
+    border-radius: 22px;
+    background-color:rgb(27, 209, 27);
+    color:white;
+    text-shadow: 2px 1px brown;
+    
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 20px;
+    font-weight: 580;
+    border: none;
+    cursor: pointer;
+    
+}
+.startBtn button:hover{
+    background-color: black;
+    color:rgb(63, 221, 15);
+    text-shadow: 1px 1px yellow;
+}
+.onStart{
+    
+    height:250px;
+    width:200px;
+    margin-top: 5px;
+    
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    display:none;
+}
+.diceImage{
+    margin-top: 2px;
+    height:100px;
+    width:100px;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    background-color: #b8b3b3;
+    border-radius: 20px;
+
+}
+
+.diceCountImage{
+    height:50px;
+    width:50px;
+    
+}
+
+.diceCountImage img{
+    width:100%;
+    height: 100%;
+}
+
+.sixCountImage{
+    display: flex;
+    
+}
+.sixCount{
+    height:25px;
+    width:25px;
+}
+.sixCount img{
+    width: 100%;
+    height: 100%;
+}
+
+.playerTurnText{
+    margin-top: 10px;
+    width:250px;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: medium;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    background-color:#b8b3b3;
+    text-align: center;
+    
+    color: red;
+    
+
+}
+
+
+
+.endBtn{
+    margin-top: 22px;
+    
+
+}
+.endBtn button{
+    width:130px;
+    height:45px;
+    padding:6px;
+    border-radius: 20px;
+    background-color:red;
+    color:white;
+    text-shadow: 2px 1px blue;
+    
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 20px;
+    font-weight: 580;
+    border: none;
+    cursor: pointer;
+    
+}
+.endBtn button:hover{
+    background-color: black;
+    color:red;
+    text-shadow: 1px 1px yellow;
+}
+
+.diceRoll{
+    margin-top: 2px;
+    
+
+}
+.diceRoll button{
+    width:7.5rem;
+    height:2.5rem;
+    padding:0.375;
+    border-radius: 1.2rem;
+    background-color:yellow;
+    color:black;
+    
+    
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 1.25rem;
+    font-weight: 580;
+    border: none;
+    cursor: pointer;
+    
+}
+.diceRoll button:hover{
+    background-color: black;
+    color:yellow;
+    
+}
+
+
+
+/* tablet mode*/
+
+@media screen and (max-width: 768px) {
+
+    .left{
+    
+        flex:1;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        
+    }
+    .right{
+       
+        flex:2;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        order:2;
+        position:relative;
+    }
+    
+    .home{
+        position: absolute;
+        height:60px;
+        width:60px;
+        border-radius: 50%;
+       
+        left:-20px;
+        bottom:120px;
+        background-color: rgb(121, 8, 8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:10px;
+        display:none;
+        
+    }
+    .board{
+        box-sizing: content-box;
+        height:350px;
+        width:350px;
+        display: flex;
+        
+        
+        background-image: url('board.jpg');
+    
+        background-size: contain;
+        background-repeat: no-repeat;
+    
+        display:grid;
+        grid-template-columns: repeat(10,1fr);
+        position: relative;
+    }
+    .redButton{
+        
+        
+        color:red;
+        
+       display: none;
+       
+        
+    }
+    
+    .blackButton{
+        
+        color:black;
+        display: none;
+       
+       
+    }
+    
+    
+    .redInitialButton{
+       
+        color:red;
+        
+    }
+    
+    .blueInitialButton{
+        color:black;
+    }
+    
+    .fa{
+        font-size: 30px;
+    }
+    
+    
+    .grid-item{
+        height:35px;
+        width:35px;
+        
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        font-weight:bold;
+        color:white;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-style: italic;
+    }
+    
+    
+    
+    .playText{
+        
+        height: 68px;
+        width:220px;
+        
+        border-radius: 10px;
+        font-size: 35px;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        color:rgba(10, 196, 50, 0.521);
+        text-align: center;
+        background-color: black;
+        color: yellow;
+        text-shadow: 2px 3px red;
+    
+        
+        
+    }
+    .result{
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        
+        text-align: center;
+        
+        color:red;
+       
+    
+    }
+    
+    .leftboard{
+        margin-top: 5px;
+        height:350px;
+        width:300px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        
+    }
+    .startBtn{
+        margin-top: 4px;
+        
+        
+    }
+    .startBtn button{
+        width:170px;
+        height:45px;
+        padding:6px;
+        border-radius: 22px;
+        background-color:rgb(27, 209, 27);
+        color:white;
+        text-shadow: 2px 1px brown;
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 20px;
+        font-weight: 580;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .startBtn button:hover{
+        background-color: black;
+        color:rgb(63, 221, 15);
+        text-shadow: 1px 1px yellow;
+    }
+    .onStart{
+        
+        height:250px;
+        width:200px;
+        margin-top: 5px;
+        
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        display:none;
+    }
+    .diceImage{
+        margin-top: 2px;
+        height:100px;
+        width:100px;
+       
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:5px;
+        background-color: #b8b3b3;
+        border-radius: 20px;
+    
+    }
+    
+    .diceCountImage{
+        height:50px;
+        width:50px;
+        
+    }
+    
+    .diceCountImage img{
+        width:100%;
+        height: 100%;
+    }
+    
+    .sixCountImage{
+        display: flex;
+        
+    }
+    .sixCount{
+        height:25px;
+        width:25px;
+    }
+    .sixCount img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .playerTurnText{
+        margin-top: 10px;
+        width:250px;
+        border-radius: 15px;
+        font-size: 24px;
+        font-weight: medium;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        background-color:#b8b3b3;
+        text-align: center;
+        
+        color: red;
+        
+    
+    }
+    
+    
+    
+    .endBtn{
+        margin-top: 22px;
+        
+    
+    }
+    .endBtn button{
+        width:130px;
+        height:45px;
+        padding:6px;
+        border-radius: 20px;
+        background-color:red;
+        color:white;
+        text-shadow: 2px 1px blue;
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 20px;
+        font-weight: 580;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .endBtn button:hover{
+        background-color: black;
+        color:red;
+        text-shadow: 1px 1px yellow;
+    }
+    
+    .diceRoll{
+        margin-top: 2px;
+        
+    
+    }
+    .diceRoll button{
+        width:7.5rem;
+        height:2.5rem;
+        padding:0.375;
+        border-radius: 1.2rem;
+        background-color:yellow;
+        color:black;
+        
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 1.25rem;
+        font-weight: 580;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .diceRoll button:hover{
+        background-color: black;
+        color:yellow;
+        
+    }
+    
+
+
+
+
+
+
+    
+  }
+
+
+  /* mobile mode */
+  @media screen and (max-width: 481px) {
+
+
+    .main-body{
+        display:flex;
+       
+        flex-direction: column-reverse;
+    }
+    
+    .left{
+        
+       
+       margin-top: -14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      
+       
+    
+        
+    }
+    .right{
+       
+        
+        display:flex;
+        justify-content: center;
+        align-items: center;
+       
+        position:relative;
+       
+    } 
+    
+    .home{
+        position: absolute;
+        height:40px;
+        width:40px;
+        border-radius: 50%;
+       
+        left:45px;
+        bottom:20px;
+        background-color: rgb(121, 8, 8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:2px;
+        display:none;
+        
+    }
+    .board{
+
+        
+       
+        box-sizing: content-box;
+        height:300px;
+        width:300px;
+        
+        
+        
+        background-image: url('board.jpg');
+    
+        background-size: contain;
+        background-repeat: no-repeat;
+    
+        display:grid;
+        grid-template-columns: repeat(10,1fr);
+        position: relative;
+    }
+    .redButton{
+        
+        
+        color:red;
+        
+       display: none;
+       
+        
+    }
+    
+    .blackButton{
+        
+        color:black;
+        display: none;
+       
+       
+    }
+    
+    
+    .redInitialButton{
+       
+        color:red;
+        
+    }
+    
+    .blueInitialButton{
+        color:black;
+    }
+    
+    .fa{
+        font-size: 28px;
+    }
+    
+    
+    .grid-item{
+        height:30px;
+        width:30px;
+        
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        font-weight:600;
+        color:white;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-style: italic;
+    }
+    
+    
+    
+    .playText{
+        
+        height: 38px;
+        width:220px;
+        
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        color:rgba(10, 196, 50, 0.521);
+        text-align: center;
+        background-color: black;
+        color: yellow;
+        text-shadow: 1px 1px red;
+    
+        
+        
+    }
+    .result{
+        margin-bottom: 14px;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        
+        text-align: center;
+        background-color: #b8b3b3;
+        color:red;
+       
+    
+    }
+    
+    .leftboard{
+        margin-top: 0px;
+        height:250px;
+        width:200px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        
+    }
+    .startBtn{
+        margin-top: 1px;
+        
+        
+    }
+    .startBtn button{
+        width:170px;
+        height:32px;
+        padding:1px;
+        border-radius: 22px;
+        background-color:rgb(27, 209, 27);
+        color:white;
+        text-shadow: 2px 1px brown;
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 16px;
+        font-weight: 300;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .startBtn button:hover{
+        background-color: black;
+        color:rgb(63, 221, 15);
+        text-shadow: 1px 1px yellow;
+    }
+    .onStart{
+        
+        height:250px;
+        width:200px;
+        margin-top: 2px;
+        
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        display:none;
+    }
+    .diceImage{
+        margin-top: 1px;
+        height:65px;
+        width:65px;
+       
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:1px;
+        background-color: #b8b3b3;
+        border-radius: 20px;
+    
+    }
+    
+    .diceCountImage{
+        
+        height:30px;
+        width:30px;
+        
+    }
+    
+    .diceCountImage img{
+        width:100%;
+        height: 100%;
+    }
+    
+    .sixCountImage{
+        margin-top: 1px;
+        display: flex;
+        
+    }
+    .sixCount{
+        height:20px;
+        width:20px;
+    }
+    .sixCount img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .playerTurnText{
+        margin-top: 2px;
+        width:250px;
+        border-radius: 15px;
+        font-size: 16px;
+        font-weight: medium;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        background-color:#b8b3b3;
+        text-align: center;
+        
+        color: red;
+        
+    
+    }
+    
+    
+    
+    .endBtn{
+        margin-top: 1px;
+        
+    
+    }
+    .endBtn button{
+        width:130px;
+        height:32px;
+        padding:1px;
+        border-radius: 20px;
+        background-color:red;
+        color:white;
+        text-shadow: 1px 1px blue;
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 16px;
+        font-weight: 300;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .endBtn button:hover{
+        background-color: black;
+        color:red;
+        text-shadow: 1px 1px yellow;
+    }
+    
+    .diceRoll{
+        margin-top: 1px;
+        
+    
+    }
+    .diceRoll button{
+        width:7.5rem;
+        height:30px;
+        padding:1px;
+        border-radius: 1.2rem;
+        background-color:yellow;
+        color:black;
+        
+        
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 16px;
+        font-weight: 300;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .diceRoll button:hover{
+        background-color: black;
+        color:yellow;
+        
+    }
+    
+    
+  }

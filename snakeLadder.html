@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Snake & Ladder</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon-32x32.png" ; type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .modal-dialog {
+        max-height: 500px !important;
+        max-width: 600px !important;
+        background-color: black !important;
+      }
+      .modal-body {
+        background-color: black !important;
+      }
+      .modal-body img {
+        max-height: 490px !important;
+        max-width: 565px;
+        background-color: black !important;
+      }
+      .h5 {
+        text-align: center !important;
+      }
+
+      @media screen and (max-width: 481px) {
+        .modal-dialog {
+          max-height: 300px !important;
+          max-width: 450px !important;
+          background-color: black !important;
+        }
+        .modal-body {
+          background-color: black !important;
+        }
+        .modal-body img {
+          max-height: 290px !important;
+          max-width: 390px;
+          background-color: black !important;
+        }
+        .h5 {
+          text-align: center !important;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="snakeLadder.css" />
+  </head>
+  <body>
+    <!--winner modal-->
+    <div
+      class="modal fade"
+      id="myModal1"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Designed and Developed by KUMAR AMBUJ
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body winner-modal">
+            <img src="cong3.png" />
+            <div id="playerWonName" class="playerWonName">
+              player 1 You won !!!!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--winner modal ends-->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Designed and Developed by KUMAR AMBUJ
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img src="modalimage.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+
+    <!--body-->
+
+    <div class="main-body">
+      <div class="left">
+        <div class="playText"><p>Let's play</p></div>
+        <div class="leftboard">
+          <div class="startBtn">
+            <button id="startBtn">Start Game</button>
+          </div>
+          <div class="onStart" id="onStart">
+            <div class="diceImage">
+              <div class="diceCountImage">
+                <img src="dice3.png" id="dice" />
+              </div>
+              <div class="sixCountImage" id="sixCountImage">
+                <!--
+                <div class="sixCount">
+                  <img src="dice6.png" />
+                </div>
+                <div class="sixCount">
+                  <img src="dice6.png" />
+                </div>
+                -->
+              </div>
+            </div>
+            <div class="diceRoll">
+              <button id="diceRollBtn">Roll Dice!!</button>
+            </div>
+            <div class="playerTurnText" id="playerTurnText">
+              Player one's turn!!!
+            </div>
+
+            <div class="endBtn">
+              <button id="endBtn">End Game</button>
+            </div>
+          </div>
+          <div class="result" id="result"></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="board">
+          <div class="grid-item" id="100"></div>
+          <div class="grid-item" id="99">99</div>
+          <div class="grid-item" id="98" style="color: black">98</div>
+          <div class="grid-item" id="97">97</div>
+          <div class="grid-item" id="96" style="color: black">96</div>
+          <div class="grid-item" id="95">95</div>
+          <div class="grid-item" id="94" style="color: black">94</div>
+          <div class="grid-item" id="93">93</div>
+          <div class="grid-item" id="92" style="color: red">92</div>
+          <div class="grid-item" id="91">91</div>
+          <div class="grid-item" id="81">81</div>
+          <div class="grid-item" id="82" style="color: black">82</div>
+          <div class="grid-item" id="83">83</div>
+          <div class="grid-item" id="84" style="color: red">84</div>
+          <div class="grid-item" id="85">85</div>
+          <div class="grid-item" id="86" style="color: red">86</div>
+          <div class="grid-item" id="87">87</div>
+          <div class="grid-item" id="88" style="color: blue">88</div>
+          <div class="grid-item" id="89" style="color: red">89</div>
+          <div class="grid-item" id="90" style="color: red">90</div>
+          <div class="grid-item" id="80" style="color: black">80</div>
+          <div class="grid-item" id="79">79</div>
+          <div class="grid-item" id="78" style="color: black">78</div>
+          <div class="grid-item" id="77">77</div>
+          <div class="grid-item" id="76" style="color: red">76</div>
+          <div class="grid-item" id="75" style="color: red">75</div>
+          <div class="grid-item" id="74" style="color: black">74</div>
+          <div class="grid-item" id="73">73</div>
+          <div class="grid-item" id="72" style="color: red">72</div>
+          <div class="grid-item" id="71">71</div>
+          <div class="grid-item" id="61">61</div>
+          <div class="grid-item" id="62" style="color: black">62</div>
+          <div class="grid-item" id="63">63</div>
+          <div class="grid-item" id="64" style="color: red">64</div>
+          <div class="grid-item" id="65">65</div>
+          <div class="grid-item" id="66">66</div>
+          <div class="grid-item" id="67">67</div>
+          <div class="grid-item" id="68" style="color: red">68</div>
+          <div class="grid-item" id="69">69</div>
+          <div class="grid-item" id="70" style="color: red">70</div>
+          <div class="grid-item" id="60" style="color: red">60</div>
+          <div class="grid-item" id="59">59</div>
+          <div class="grid-item" id="58" style="color: red">58</div>
+          <div class="grid-item" id="57">57</div>
+          <div class="grid-item" id="56" style="color: black">56</div>
+          <div class="grid-item" id="55">55</div>
+          <div class="grid-item" id="54" style="color: deeppink">54</div>
+          <div class="grid-item" id="53">53</div>
+          <div class="grid-item" id="52" style="color: red">52</div>
+          <div class="grid-item" id="51">51</div>
+          <div class="grid-item" id="41">41</div>
+          <div class="grid-item" id="42" style="color: red">42</div>
+          <div class="grid-item" id="43">43</div>
+          <div class="grid-item" id="44" style="color: black">44</div>
+          <div class="grid-item" id="45">45</div>
+          <div class="grid-item" id="46" style="color: blue">46</div>
+          <div class="grid-item" id="47">47</div>
+          <div class="grid-item" id="48" style="color: blue">48</div>
+          <div class="grid-item" id="49" style="color: black">49</div>
+          <div class="grid-item" id="50" style="color: black">50</div>
+          <div class="grid-item" id="40" style="color: red">40</div>
+          <div class="grid-item" id="39">39</div>
+          <div class="grid-item" id="38" style="color: brown">38</div>
+          <div class="grid-item" id="37">37</div>
+          <div class="grid-item" id="36">36</div>
+          <div class="grid-item" id="35">35</div>
+          <div class="grid-item" id="34" style="color: red">34</div>
+          <div class="grid-item" id="33">33</div>
+          <div class="grid-item" id="32" style="color: blue">32</div>
+          <div class="grid-item" id="31">31</div>
+          <div class="grid-item" id="21">21</div>
+          <div class="grid-item" id="22" style="color: red">22</div>
+          <div class="grid-item" id="23">23</div>
+          <div class="grid-item" id="24" style="color: red">24</div>
+          <div class="grid-item" id="25">25</div>
+          <div class="grid-item" id="26" style="color: red">26</div>
+          <div class="grid-item" id="27">27</div>
+          <div class="grid-item" id="28" style="color: red">28</div>
+          <div class="grid-item" id="29">29</div>
+          <div class="grid-item" id="30" style="color: red">30</div>
+          <div class="grid-item" id="20" style="color: red">20</div>
+          <div class="grid-item" id="19">19</div>
+          <div class="grid-item" id="18" style="color: blue">18</div>
+          <div class="grid-item" id="17">17</div>
+          <div class="grid-item" id="16">16</div>
+          <div class="grid-item" id="15" style="color: red">15</div>
+          <div class="grid-item" id="14" style="color: blue">14</div>
+          <div class="grid-item" id="13">13</div>
+          <div class="grid-item" id="12" style="color: green">12</div>
+          <div class="grid-item" id="11">11</div>
+          <div class="grid-item" id="1">1</div>
+          <div class="grid-item" id="2" style="color: brown">2</div>
+          <div class="grid-item" id="3">3</div>
+          <div class="grid-item" id="4" style="color: red">4</div>
+          <div class="grid-item" id="5">5</div>
+          <div class="grid-item" id="6" style="color: blue">6</div>
+          <div class="grid-item" id="7">7</div>
+          <div class="grid-item" id="8" style="color: blue">8</div>
+          <div class="grid-item" id="9">9</div>
+          <div class="grid-item" id="10" style="color: blue">10</div>
+
+          <div class="redButton" id="player1Btn">
+            <i class="fa fa-map-marker"></i>
+          </div>
+          <div class="blackButton" id="player2Btn">
+            <i class="fa fa-map-marker"></i>
+          </div>
+        </div>
+        <div class="home" id="home">
+          <div class="redInitialButton" id="redInitialButton">
+            <i class="fa fa-map-marker"></i>
+          </div>
+          <div class="blueInitialButton" id="blackInitialButton">
+            <i class="fa fa-map-marker"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--body-->
+
+    <script src="snakeLadder.js"></script>
+  </body>
+</html>
