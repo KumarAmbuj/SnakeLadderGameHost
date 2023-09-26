@@ -136,7 +136,24 @@ diceRollBtn.addEventListener("click", () => {
       //player2Btn.style.display = "block";
     }
     diceRollBtn.disabled = true;
-    moveForward(player, count);
+    //if (player === 0) {
+    //  document.getElementById("player1Btn").style.display = "block";
+    //} else {
+    //  document.getElementById("player2Btn").style.display = "block";
+    //}
+    if (countNumber > 1) {
+      document.getElementById("player1Btn").style.display = "block";
+      document.getElementById("player2Btn").style.display = "block";
+    }
+    if (player === 0) {
+      clearInterval(id1);
+    } else {
+      clearInterval(id2);
+    }
+    setTimeout(() => {
+      moveForward(player, count);
+    }, 800);
+    //moveForward(player, count);
 
     setTimeout(() => {
       //if 100
@@ -162,9 +179,17 @@ diceRollBtn.addEventListener("click", () => {
         }, 400);
 
         setTimeout(() => {
-          player = 1 - player;
-          count = 0;
-          showPlayerTurn(player);
+          if (player1sum == 100) {
+            console.log(player1sum, "1");
+            let aud = new Audio("win.mp3");
+            aud.play();
+            fun(player);
+          } else {
+            console.log(player1sum, "1");
+            player = 1 - player;
+            count = 0;
+            showPlayerTurn(player);
+          }
         }, c * 200 + 500);
       } else if (ladderFrom.includes(player2sum)) {
         let aud = new Audio("ladder.mp3");
@@ -176,9 +201,17 @@ diceRollBtn.addEventListener("click", () => {
         }, 400);
 
         setTimeout(() => {
-          player = 1 - player;
-          count = 0;
-          showPlayerTurn(player);
+          if (player2sum == 100) {
+            console.log(player2sum, "2");
+            let aud = new Audio("win.mp3");
+            aud.play();
+            fun(player);
+          } else {
+            console.log(player2sum, "2");
+            player = 1 - player;
+            count = 0;
+            showPlayerTurn(player);
+          }
         }, c * 200 + 500);
       } else if (snakeFrom.includes(player1sum)) {
         let aud = new Audio("snakebite.mp3");
@@ -193,7 +226,7 @@ diceRollBtn.addEventListener("click", () => {
           player = 1 - player;
           count = 0;
           showPlayerTurn(player);
-        }, c * 200 + 500);
+        }, c * 150 + 500);
       } else if (snakeFrom.includes(player2sum)) {
         let aud = new Audio("snakebite.mp3");
         aud.play();
@@ -207,7 +240,7 @@ diceRollBtn.addEventListener("click", () => {
           player = 1 - player;
           count = 0;
           showPlayerTurn(player);
-        }, c * 200 + 500);
+        }, c * 150 + 500);
       }
 
       // ladder
@@ -216,12 +249,12 @@ diceRollBtn.addEventListener("click", () => {
 
       //else
       else {
-        console.log("hey");
+        //console.log("hey");
         player = 1 - player;
         count = 0;
         showPlayerTurn(player);
       }
-    }, count * 200 + 200);
+    }, count * 200 + 300 + 900);
 
     //ladder
     //snake
@@ -230,31 +263,84 @@ diceRollBtn.addEventListener("click", () => {
     //showPlayerTurn(player);
   }
 });
+let id1;
+let id2;
+let countNumber = 0;
 function showPlayerTurn(a) {
+  countNumber++;
   diceRollBtn.disabled = false;
+
   const id = setTimeout(() => {
     dice.setAttribute("src", "dice.jpg");
     sixCountImage.innerHTML = "";
 
     if (a === 0) {
       result.textContent = "";
+
       playerTurnText.textContent = "Player one's turn!!!";
       playerTurnText.style.color = "red";
     } else {
       result.textContent = "";
+
       playerTurnText.textContent = "Player two's turn!!!";
       playerTurnText.style.color = "black";
     }
   }, 600);
+  if (a === 0) {
+    clearInterval(id2);
+    document.getElementById("player2Btn").style.display = "block";
+    let flag = true;
+    id1 = setInterval(() => {
+      if (flag) {
+        playerTurnText.textContent = "Player one's turn!!!";
+        playerTurnText.style.color = "red";
+        //document.getElementById("player1Btn").style.display = "block";
+        if (countNumber > 1) {
+          document.getElementById("player1Btn").style.display = "block";
+        }
+      } else {
+        playerTurnText.textContent = "Player one's turn!!!";
+        playerTurnText.style.color = "blue";
+        if (countNumber > 1) {
+          document.getElementById("player1Btn").style.display = "none";
+        }
+        //document.getElementById("player1Btn").style.display = "none";
+      }
+      flag = !flag;
+    }, 300);
+  } else {
+    clearInterval(id1);
+    document.getElementById("player1Btn").style.display = "block";
+    let flag = true;
+    id2 = setInterval(() => {
+      if (flag) {
+        playerTurnText.textContent = "Player two's turn!!!";
+        playerTurnText.style.color = "black";
+        if (countNumber > 1) {
+          document.getElementById("player2Btn").style.display = "block";
+        }
+        // document.getElementById("player2Btn").style.display = "block";
+      } else {
+        playerTurnText.textContent = "Player two's turn!!!";
+        playerTurnText.style.color = "blue";
+        if (countNumber > 1) {
+          document.getElementById("player2Btn").style.display = "none";
+        }
+        // document.getElementById("player2Btn").style.display = "none";
+      }
+      flag = !flag;
+    }, 300);
+  }
 }
 
 function moveForward(player, count) {
+  let x = count;
   if (count <= 0) {
     return;
   }
   setTimeout(() => {
     if (player == 0) {
-      let aud = new Audio("forward.mp3");
+      let aud = new Audio("backward.mp3");
       aud.play();
       player1sum++;
       if (player1sum == 1) {
@@ -282,7 +368,7 @@ function moveForward(player, count) {
         document.getElementById("player1Btn").style.display = "block";
       }
     } else {
-      let aud = new Audio("forward.mp3");
+      let aud = new Audio("backward.mp3");
       aud.play();
       player2sum++;
       if (player2sum == 1) {
@@ -320,7 +406,7 @@ function moveBackward(player, count) {
   }
   setTimeout(() => {
     if (player == 0) {
-      let aud = new Audio("backward.mp3");
+      let aud = new Audio("forward.mp3");
       aud.play();
       player1sum--;
       if (player1sum == 1) {
@@ -348,7 +434,7 @@ function moveBackward(player, count) {
         document.getElementById("player1Btn").style.display = "block";
       }
     } else {
-      let aud = new Audio("backward.mp3");
+      let aud = new Audio("forward.mp3");
       aud.play();
       player2sum--;
       if (player2sum == 1) {
@@ -377,7 +463,7 @@ function moveBackward(player, count) {
       }
     }
     moveBackward(player, count - 1);
-  }, 200);
+  }, 150);
 }
 
 //function moveForward(player, count) {

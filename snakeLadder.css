@@ -105,7 +105,7 @@ body{
 }
 
 .fa{
-    font-size: 40px;
+    font-size: 48px;
 }
 
 
@@ -115,9 +115,9 @@ body{
     
     display:flex;
     justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight:bold;
+    align-items: flex-end;
+    font-size: 20px;
+    font-weight:600;
     color:white;
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     font-style: italic;
